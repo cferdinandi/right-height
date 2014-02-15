@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>TITLE</title>
+		<title>Right Height</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<!-- A basic responsive reset -->
@@ -17,17 +17,47 @@
 
 			img, audio, video, canvas { max-width: 100%; }
 
+			/* Add box sizing to everything
+			 * http://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
+			*,
+			*:before,
+			*:after {
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+			}
+
 			/*  Sets body width */
 			.container {
-				max-width: 40em;
+				max-width: 60em;
 				width: 88%;
 				margin-left: auto;
 				margin-right: auto;
 			}
-		</style>
 
-		<!-- stylesheets -->
-		<link rel="stylesheet" href="css/TITLE-css.css" type="text/css">
+			/*	Background highlight */
+			.hero {
+				background-color: #f7f7f7;
+				margin-bottom: 1.5625em;
+				padding: 0.9375em;
+				border: 0.0725em solid #e5e5e5;
+			}
+
+			/*	A simple CSS grid */
+			@media (min-width: 40em) {
+				.row {
+				  margin-left: -1.4%;
+				  margin-right: -1.4%;
+				}
+
+				.grid-third {
+					float: left;
+					width: 33.33333333333%;
+					padding-left: 1.4%;
+					padding-right: 1.4%;
+				}
+			}
+		</style>
 
 		<!-- HTML5 Shim for IE -->
 		<!--[if IE]>
@@ -38,12 +68,33 @@
 	<body>
 		<section class="container">
 
-			<h1 style="text-align: center; font-size: 3em;">TITLE</h1>
-			<p style="text-align: center; font-size: 1.5em;">SUBTITLE</p>
+			<h1 style="text-align: center; font-size: 3em;">Right Height</h1>
+			<p style="text-align: center; font-size: 1.5em;">Dynamically set content containers to the same height.</p>
 
-			<p>CONTENT</p>
+			<div class="row" data-right-height>
+				<div class="grid-third">
+					<div class="hero" data-right-height-content>
+						<h2>Content 1</h2>
+						<p>The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs.</p>
+					</div>
+				</div>
+				<div class="grid-third">
+					<div class="hero" data-right-height-content>
+						<h2>Content 2</h2>
+						<p>Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt fox. Bright vixens jump; dozy fowl quack. Quick wafting zephyrs vex bold Jim. Quick zephyrs blow, vexing daft Jim. Sex-charged fop blew my junk TV quiz. How quickly daft jumping zebras vex. Two driven jocks help fax my big quiz.</p>
+					</div>
+				</div>
+				<div class="grid-third">
+					<div class="hero" data-right-height-content>
+						<h2>Content 3</h2>
+						<p>Quick, Baz, get my woven flax jodhpurs! "Now fax quiz Jack!" my brave ghost pled. Five quacking zephyrs jolt my wax bed. Flummoxed by job, kvetching W. zaps Iraq. Cozy sphinx waves quart jug of bad milk. A very bad quack might jinx zippy fowls.</p>
+					</div>
+				</div>
+			</div>
 
 		</section>
+
+		<script src="right-height.js"></script>
 
 	</body>
 </html>
