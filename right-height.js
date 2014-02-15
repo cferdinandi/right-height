@@ -18,38 +18,35 @@ window.rightHeight = (function (window, document, undefined) {
 
 		// SELECTORS
 
-		var containers = jQuery('[data-right-height]');
+		var containers = document.querySelectorAll('[data-right-height]');
 
 
 		// METHODS
 
-		// TODO: Make Vanilla JS
 		var resetHeight = function ( content ) {
-			content.height('auto');
+			content.style.height = 'auto';
 		};
 
-		// TODO: Make Vanilla JS
 		var getHeight = function ( content, height ) {
-			if ( content.height() > height ) {
-				height = content.height();
+			if ( content.offsetHeight > height ) {
+				height = content.offsetHeight;
 			}
 			return height;
 		};
 
-		// TODO: Make Vanilla JS
 		var setHeight = function ( content, height ) {
-			content.height(height);
+			content.style.height = height + 'px';
 		};
 
 		var runRightHeight = function ( container ) {
 
 			// SELECTORS
 			var contents = container.querySelectorAll('[data-right-height-content]');
-			var height = 0;
+			var height = '0';
 
 			// EVENTS, LISTENERS, AND INITS
 			Array.prototype.forEach.call(contents, function (content, index) {
-				height = resetHeight( content );
+				resetHeight( content );
 			});
 
 			Array.prototype.forEach.call(contents, function (content, index) {
