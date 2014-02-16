@@ -1,6 +1,6 @@
 /* =============================================================
 
-	Right Height v1.0
+	Right Height v0.2
 	Dynamically set content containers to the same height, by Chris Ferdinandi.
 	http://gomakethings.com
 
@@ -19,6 +19,7 @@ window.rightHeight = (function (window, document, undefined) {
 		// SELECTORS
 
 		var containers = document.querySelectorAll('[data-right-height]');
+		var resizeTimeout;
 
 
 		// METHODS
@@ -67,7 +68,7 @@ window.rightHeight = (function (window, document, undefined) {
 			content.style.height = height + 'px';
 		};
 
-		var runRightHeight = function ( container ) {
+		var adjustContainerHeight = function ( container ) {
 
 			// SELECTORS
 			var contents = container.querySelectorAll('[data-right-height-content]');
@@ -91,12 +92,28 @@ window.rightHeight = (function (window, document, undefined) {
 
 		};
 
+		var runRightHeight = function () {
+			Array.prototype.forEach.call(containers, function (container, index) {
+				adjustContainerHeight( container );
+			});
+		};
+
+		var resizeThrottler = function () {
+			// ignore resize events as long as an actualResizeHandler execution is in the queue
+			if ( !resizeTimeout ) {
+				resizeTimeout = setTimeout(function() {
+					resizeTimeout = null;
+					runRightHeight();
+				}, 66);
+			}
+		};
+
 
 		// EVENTS, LISTENERS, AND INITS
 
-		Array.prototype.forEach.call(containers, function (container, index) {
-			runRightHeight( container );
-		});
+		runRightHeight();
+		window.addEventListener( 'resize', resizeThrottler, false);
+
 
 		// TODO: Add resize event
 		// May require making above `forEach loop part of a function
