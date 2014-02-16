@@ -50,6 +50,8 @@ window.rightHeight = (function (window, document, undefined) {
 				} else {
 					return true;
 				}
+			} else {
+				return false;
 			}
 
 		};
