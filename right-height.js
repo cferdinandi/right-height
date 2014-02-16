@@ -23,6 +23,35 @@ window.rightHeight = (function (window, document, undefined) {
 
 		// METHODS
 
+		// Calculate distance to top of page
+		var getDistanceToTop = function ( content ) {
+			var distance = 0;
+			if (content.offsetParent) {
+				do {
+					distance += content.offsetTop;
+					content = content.offsetParent;
+				} while (content);
+			}
+			return distance;
+		};
+
+		var checkIfStacked = function ( contents ) {
+
+			// SELECTORS
+			var contentFirst = contents.item(0);
+			var contentSecond = contents.item(1);
+
+			// EVENTS, LISTENERS, AND INITS
+			if ( contentFirst !== null && contentSecond !== null ) {
+				if ( getDistanceToTop(contentFirst) - getDistanceToTop(contentSecond) === 0 ) {
+					return false;
+				} else {
+					return true;
+				}
+			}
+
+		};
+
 		var resetHeight = function ( content ) {
 			content.style.height = 'auto';
 		};
@@ -42,6 +71,7 @@ window.rightHeight = (function (window, document, undefined) {
 
 			// SELECTORS
 			var contents = container.querySelectorAll('[data-right-height-content]');
+			var isStacked = checkIfStacked(contents);
 			var height = '0';
 
 			// EVENTS, LISTENERS, AND INITS
@@ -49,13 +79,15 @@ window.rightHeight = (function (window, document, undefined) {
 				resetHeight( content );
 			});
 
-			Array.prototype.forEach.call(contents, function (content, index) {
-				height = getHeight( content, height );
-			});
+			if ( !isStacked ) {
+				Array.prototype.forEach.call(contents, function (content, index) {
+					height = getHeight( content, height );
+				});
 
-			Array.prototype.forEach.call(contents, function (content, index) {
-				setHeight( content, height );
-			});
+				Array.prototype.forEach.call(contents, function (content, index) {
+					setHeight( content, height );
+				});
+			}
 
 		};
 
