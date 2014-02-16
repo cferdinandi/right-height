@@ -1,7 +1,7 @@
 /* =============================================================
 
-	Right Height v0.2
-	Dynamically set content containers to the same height, by Chris Ferdinandi.
+	Right Height v1.0
+	Dynamically set content areas of different lengths to the same height, by Chris Ferdinandi.
 	http://gomakethings.com
 
 	Free to use under the MIT License.
@@ -18,8 +18,8 @@ window.rightHeight = (function (window, document, undefined) {
 
 		// SELECTORS
 
-		var containers = document.querySelectorAll('[data-right-height]');
-		var resizeTimeout;
+		var containers = document.querySelectorAll('[data-right-height]'); // Groups of content
+		var resizeTimeout; // Timer for resize event throttler
 
 
 		// METHODS
@@ -36,6 +36,7 @@ window.rightHeight = (function (window, document, undefined) {
 			return distance;
 		};
 
+		// Check if a group of content areas are stacked
 		var checkIfStacked = function ( contents ) {
 
 			// SELECTORS
@@ -53,10 +54,13 @@ window.rightHeight = (function (window, document, undefined) {
 
 		};
 
+		// Reset the content height to `auto`
 		var resetHeight = function ( content ) {
 			content.style.height = 'auto';
 		};
 
+		// Get the natural height of each content area.
+		// Record the tallest height to use for all other content.
 		var getHeight = function ( content, height ) {
 			if ( content.offsetHeight > height ) {
 				height = content.offsetHeight;
@@ -64,10 +68,13 @@ window.rightHeight = (function (window, document, undefined) {
 			return height;
 		};
 
+		// Set the height of each content area.
 		var setHeight = function ( content, height ) {
 			content.style.height = height + 'px';
 		};
 
+		// Get all content ares within a group.
+		// Check if they're stacked, and set/reset their height.
 		var adjustContainerHeight = function ( container ) {
 
 			// SELECTORS
@@ -92,14 +99,16 @@ window.rightHeight = (function (window, document, undefined) {
 
 		};
 
+		// For each group of content, adjust the content are heights.
 		var runRightHeight = function () {
 			Array.prototype.forEach.call(containers, function (container, index) {
 				adjustContainerHeight( container );
 			});
 		};
 
+		// On window resize, only run `runRightHeight` at a rate of 15fps.
+		// Better for performance.
 		var resizeThrottler = function () {
-			// ignore resize events as long as an actualResizeHandler execution is in the queue
 			if ( !resizeTimeout ) {
 				resizeTimeout = setTimeout(function() {
 					resizeTimeout = null;
@@ -111,13 +120,8 @@ window.rightHeight = (function (window, document, undefined) {
 
 		// EVENTS, LISTENERS, AND INITS
 
-		runRightHeight();
-		window.addEventListener( 'resize', resizeThrottler, false);
-
-
-		// TODO: Add resize event
-		// May require making above `forEach loop part of a function
-		// (runs on load, and on resize).
+		runRightHeight(); // Run Right Height on page load
+		window.addEventListener( 'resize', resizeThrottler, false); // Run Right Height on window resize
 
 	}
 
