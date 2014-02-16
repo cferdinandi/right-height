@@ -2,7 +2,7 @@
 Dynamically set content areas of different lengths to the same height.
 
 ## How It Works
-Getting started with Right Height is really easy. [View the online tutorial (coming soon!)](http://cferdinandi.github.io/right-height/) or dig through the `index.html` file.
+Getting started with Right Height is really easy. [View the online tutorial)](http://cferdinandi.github.io/right-height/) or dig through the `index.html` file.
 
 ## Changelog
 * v1.0 (Feburary 16, 2014)
