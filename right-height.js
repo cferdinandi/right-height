@@ -1,6 +1,6 @@
 /* =============================================================
 
-	Right Height v1.0
+	Right Height v1.1
 	Dynamically set content areas of different lengths to the same height, by Chris Ferdinandi.
 	http://gomakethings.com
 
@@ -59,6 +59,7 @@ window.rightHeight = (function (window, document, undefined) {
 		// Reset the content height to `auto`
 		var resetHeight = function ( content ) {
 			content.style.height = 'auto';
+			content.style.minHeight = '0';
 		};
 
 		// Get the natural height of each content area.

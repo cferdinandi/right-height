@@ -5,6 +5,8 @@ Dynamically set content areas of different lengths to the same height.
 Getting started with Right Height is really easy. [View the online tutorial)](http://cferdinandi.github.io/right-height/) or dig through the `index.html` file.
 
 ## Changelog
+* v1.1 (February 16, 2014)
+  * Added `style.minHeight` setting to reset to get more accurate height measurement and allow for fallback height on non-supporting browsers.
 * v1.0 (Feburary 16, 2014)
   * Initial production-ready release.
 * v0.2 (February 16, 2014)
