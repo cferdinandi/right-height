@@ -110,10 +110,10 @@ window.rightHeight = (function (window, document, undefined) {
 
 	// On window resize, only run `_runRightHeight` at a rate of 15fps for better performance
 	// Private method
-	var _eventThrottler = function ( resizeTimeout, containers ) {
-		if ( !resizeTimeout ) {
-			resizeTimeout = setTimeout(function() {
-				resizeTimeout = null;
+	var _eventThrottler = function ( eventTimeout, containers ) {
+		if ( !eventTimeout ) {
+			eventTimeout = setTimeout(function() {
+				eventTimeout = null;
 				_runRightHeight( containers );
 			}, 66);
 		}
@@ -128,11 +128,11 @@ window.rightHeight = (function (window, document, undefined) {
 
 			// Selectors and variables
 			var containers = document.querySelectorAll('[data-right-height]'); // Groups of content
-			var resizeTimeout; // Timer for resize event throttler
+			var eventTimeout; // Timer for resize event throttler
 
 			// Run event throttler on window resize
 			var _runEventThrottler = function () {
-				_eventThrottler( resizeTimeout, containers );
+				_eventThrottler( eventTimeout, containers );
 			};
 
 			// Events and listeners
