@@ -1,6 +1,6 @@
 /* =============================================================
 
-	Right Height v1.1
+	Right Height v2.0
 	Dynamically set content areas of different lengths to the same height, by Chris Ferdinandi.
 	http://gomakethings.com
 
