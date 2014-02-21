@@ -132,7 +132,7 @@ window.rightHeight = (function (window, document, undefined) {
 
 			// Events and listeners
 			_runRightHeight( containers ); // Run Right Height on page load
-			window.addEventListener( 'resize', _eventThrottler.bind(this, eventTimeout, containers), false); // Run Right Height on window resize
+			window.addEventListener( 'resize', _eventThrottler.bind( this, eventTimeout, containers ), false); // Run Right Height on window resize
 
 		}
 
