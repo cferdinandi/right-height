@@ -130,14 +130,9 @@ window.rightHeight = (function (window, document, undefined) {
 			var containers = document.querySelectorAll('[data-right-height]'); // Groups of content
 			var eventTimeout; // Timer for resize event throttler
 
-			// Run event throttler on window resize
-			var _runEventThrottler = function () {
-				_eventThrottler( eventTimeout, containers );
-			};
-
 			// Events and listeners
 			_runRightHeight( containers ); // Run Right Height on page load
-			window.addEventListener( 'resize', _runEventThrottler, false); // Run Right Height on window resize
+			window.addEventListener( 'resize', _eventThrottler.bind(this, eventTimeout, containers), false); // Run Right Height on window resize
 
 		}
 
