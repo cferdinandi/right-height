@@ -15,7 +15,7 @@ window.rightHeight = (function (window, document, undefined) {
 
 	// Calculate distance to top of page
 	// Private method
-	// Returns integer
+	// Returns an integer
 	var _getDistanceToTop = function ( content ) {
 		var distance = 0;
 		if (content.offsetParent) {
@@ -32,11 +32,11 @@ window.rightHeight = (function (window, document, undefined) {
 	// Boolean: Returns true if elements are stacked
 	var _checkIfStacked = function ( contents ) {
 
-		// SELECTORS
+		// Selectors and variables
 		var contentFirst = contents.item(0);
 		var contentSecond = contents.item(1);
 
-		// EVENTS, LISTENERS, AND INITS
+		// Determine if content containers are stacked
 		if ( contentFirst !== null && contentSecond !== null ) {
 			if ( _getDistanceToTop(contentFirst) - _getDistanceToTop(contentSecond) === 0 ) {
 				return false;
@@ -51,6 +51,7 @@ window.rightHeight = (function (window, document, undefined) {
 
 	// Reset the content height to `auto`
 	// Private method
+	// Runs functions
 	var _resetHeight = function ( content ) {
 		content.style.height = 'auto';
 		content.style.minHeight = '0';
@@ -59,7 +60,7 @@ window.rightHeight = (function (window, document, undefined) {
 	// Get the natural height of each content area
 	// Record the tallest height to use for all other content
 	// Private method
-	// Returns integer.
+	// Returns an integer
 	var _getHeight = function ( content, height ) {
 		if ( content.offsetHeight > height ) {
 			height = content.offsetHeight;
@@ -69,14 +70,16 @@ window.rightHeight = (function (window, document, undefined) {
 
 	// Set the height of each content area
 	// Private method
+	// Runs functions
 	var _setHeight = function ( content, height ) {
 		content.style.height = height + 'px';
 	};
 
 	// Get all content ares within a group
 	// Check if they're stacked, and set/reset their height
-	// Private method
-	var _adjustContainerHeight = function ( container ) {
+	// Public method
+	// Runs functions
+	var adjustContainerHeight = function ( container ) {
 
 		// SELECTORS
 		var contents = container.querySelectorAll('[data-right-height-content]');
@@ -102,14 +105,16 @@ window.rightHeight = (function (window, document, undefined) {
 
 	// For each group of content, adjust the content are heights
 	// Private method
+	// Runs functions
 	var _runRightHeight = function ( containers ) {
 		Array.prototype.forEach.call(containers, function (container, index) {
-			_adjustContainerHeight( container );
+			adjustContainerHeight( container );
 		});
 	};
 
 	// On window resize, only run `_runRightHeight` at a rate of 15fps for better performance
 	// Private method
+	// Runs functions
 	var _eventThrottler = function ( eventTimeout, containers ) {
 		if ( !eventTimeout ) {
 			eventTimeout = setTimeout(function() {
@@ -121,6 +126,7 @@ window.rightHeight = (function (window, document, undefined) {
 
 	// Initialize Right Height
 	// Public method
+	// Runs functions
 	var init = function () {
 
 		// Feature test before initializing
@@ -132,7 +138,7 @@ window.rightHeight = (function (window, document, undefined) {
 
 			// Events and listeners
 			_runRightHeight( containers ); // Run Right Height on page load
-			window.addEventListener( 'resize', _eventThrottler.bind( this, eventTimeout, containers ), false); // Run Right Height on window resize
+			window.addEventListener( 'resize', _eventThrottler.bind( null, eventTimeout, containers ), false); // Run Right Height on window resize
 
 		}
 
@@ -140,7 +146,8 @@ window.rightHeight = (function (window, document, undefined) {
 
 	// Return public methods
 	return {
-		init: init
+		init: init,
+		adjustContainerHeight: adjustContainerHeight
 	};
 
 })(window, document);
