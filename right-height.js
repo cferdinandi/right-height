@@ -107,7 +107,7 @@ window.rightHeight = (function (window, document, undefined) {
 		var isStacked = _checkIfStacked(contents);
 		var height = '0';
 
-		options.callbackBefore(); // Run callbacks before toggling content
+		options.callbackBefore(); // Run callbacks before adjusting content
 
 		// Reset each content area to its natural height
 		Array.prototype.forEach.call(contents, function (content, index) {
@@ -125,7 +125,7 @@ window.rightHeight = (function (window, document, undefined) {
 			});
 		}
 
-		options.callbackAfter(); // Run callbacks after toggling content
+		options.callbackAfter(); // Run callbacks after adjust content
 
 	};
 
