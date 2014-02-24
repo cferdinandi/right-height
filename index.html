@@ -96,7 +96,10 @@
 
 		<script src="right-height.js"></script>
 		<script>
-			rightHeight.init();
+			rightHeight.init({
+				callbackBefore: function () {},
+				callbackAfter: function () {}
+			});
 		</script>
 
 	</body>

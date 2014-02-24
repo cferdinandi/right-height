@@ -13,6 +13,26 @@ window.rightHeight = (function (window, document, undefined) {
 
 	'use strict';
 
+	// Default settings
+	// Private method
+	// Returns an {object}
+	var _defaults = function () {
+		return {
+			callbackBefore: function () { console.log('itworks!'); },
+			callbackAfter: function () {console.log('Yep!');}
+		};
+	};
+
+	// Merge default settings with user options
+	// Private method
+	// Returns an {object}
+	var _mergeObjects = function ( original, updates ) {
+		for (var key in updates) {
+			original[key] = updates[key];
+		}
+		return original;
+	};
+
 	// Calculate distance to top of page
 	// Private method
 	// Returns an integer
@@ -79,18 +99,22 @@ window.rightHeight = (function (window, document, undefined) {
 	// Check if they're stacked, and set/reset their height
 	// Public method
 	// Runs functions
-	var adjustContainerHeight = function ( container ) {
+	var adjustContainerHeight = function ( container, options ) {
 
-		// SELECTORS
+		// Selectors and variables
+		options = _mergeObjects( _defaults(), options || {} ); // Merge user options with defaults
 		var contents = container.querySelectorAll('[data-right-height-content]');
 		var isStacked = _checkIfStacked(contents);
 		var height = '0';
 
-		// EVENTS, LISTENERS, AND INITS
+		options.callbackBefore(); // Run callbacks before toggling content
+
+		// Reset each content area to its natural height
 		Array.prototype.forEach.call(contents, function (content, index) {
 			_resetHeight( content );
 		});
 
+		// If content areas are not stacked, give them equal heights
 		if ( !isStacked ) {
 			Array.prototype.forEach.call(contents, function (content, index) {
 				height = _getHeight( content, height );
@@ -101,25 +125,27 @@ window.rightHeight = (function (window, document, undefined) {
 			});
 		}
 
+		options.callbackAfter(); // Run callbacks after toggling content
+
 	};
 
 	// For each group of content, adjust the content are heights
 	// Private method
 	// Runs functions
-	var _runRightHeight = function ( containers ) {
+	var _runRightHeight = function ( containers, options ) {
 		Array.prototype.forEach.call(containers, function (container, index) {
-			adjustContainerHeight( container );
+			adjustContainerHeight( container, options );
 		});
 	};
 
 	// On window resize, only run `_runRightHeight` at a rate of 15fps for better performance
 	// Private method
 	// Runs functions
-	var _eventThrottler = function ( eventTimeout, containers ) {
+	var _eventThrottler = function ( eventTimeout, containers, options ) {
 		if ( !eventTimeout ) {
 			eventTimeout = setTimeout(function() {
 				eventTimeout = null;
-				_runRightHeight( containers );
+				_runRightHeight( containers, options );
 			}, 66);
 		}
 	};
@@ -127,18 +153,19 @@ window.rightHeight = (function (window, document, undefined) {
 	// Initialize Right Height
 	// Public method
 	// Runs functions
-	var init = function () {
+	var init = function ( options ) {
 
 		// Feature test before initializing
 		if ( 'querySelector' in document && 'addEventListener' in window && Array.prototype.forEach ) {
 
 			// Selectors and variables
+			options = _mergeObjects( _defaults(), options || {} ); // Merge user options with defaults
 			var containers = document.querySelectorAll('[data-right-height]'); // Groups of content
 			var eventTimeout; // Timer for resize event throttler
 
 			// Events and listeners
-			_runRightHeight( containers ); // Run Right Height on page load
-			window.addEventListener( 'resize', _eventThrottler.bind( null, eventTimeout, containers ), false); // Run Right Height on window resize
+			_runRightHeight( containers, options ); // Run Right Height on page load
+			window.addEventListener( 'resize', _eventThrottler.bind( null, eventTimeout, containers, options ), false); // Run Right Height on window resize
 
 		}
 
