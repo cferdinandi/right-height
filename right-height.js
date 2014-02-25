@@ -18,8 +18,8 @@ window.rightHeight = (function (window, document, undefined) {
 	// Returns an {object}
 	var _defaults = function () {
 		return {
-			callbackBefore: function () { console.log('itworks!'); },
-			callbackAfter: function () {console.log('Yep!');}
+			callbackBefore: function () {},
+			callbackAfter: function () {}
 		};
 	};
 

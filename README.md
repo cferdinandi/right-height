@@ -1,8 +1,82 @@
 # Right Height
-Dynamically set content areas of different lengths to the same height.
+Dynamically set content areas of different lengths to the same height, by [Chris Ferdinandi](http://gomakethings.com). [View the Demo](http://cferdinandi.github.io/right-height/)
 
-## How It Works
-Getting started with Right Height is really easy. [View the online tutorial)](http://cferdinandi.github.io/right-height/) or dig through the `index.html` file.
+1. [Getting Started](#getting-started)
+2. [Browser Compatability](#browser-compatability)
+3. [Options & Settings](#options-and-settings)
+4. [Changelog](#changelog)
+5. [License](#license)
+6. [Older Docs](#older-docs)
+
+
+
+## Getting Started
+
+### 1. Include Right Height on your site.
+
+	<script src="js/right-height.js"></script>
+
+### 2. Add the markup to your HTML.
+
+	<div class="row" data-right-height>
+		<div class="grid-third" data-right-height-content>
+			Content 1
+		</div>
+		<div class="grid-third" data-right-height-content>
+			Content 2
+		</div>
+		<div class="grid-third" data-right-height-content>
+			Content 3
+		</div>
+	</div>
+
+Add the `[data-right-height]` data attribute to the wrapper div for your content areas. This let's Right Height adjust heights for different sections of content independently from each other.
+
+Give each content area that you want Right Height to adjust a `[data-right-height-content]` data attribute.
+
+*You can style your content areas (and their wrappers) however you see fit. The `.row` and `.grid-third` classes are used for demonstration purposes only.*
+
+### 3. Initialize Right Height.
+
+	<script>
+		rightHeight.init();
+	</script>
+
+In the footer of your page, after the content, initialize Right Height. And that's it, you're done. Nice work!
+
+
+
+## Options and Settings
+
+Right Height includes smart defaults and works right out of the box. But if you want to customize things, it also has a robust API that provides multiple ways for you to adjust the default options and settings.
+
+### Global Settings
+
+You can pass options and callsbacks into Right Height through the `init()` function:
+
+	rightHeight.init({
+		callbackBefore: function () {}, // Function that runs before content height is adjusted
+		callbackAfter: function () {} // Function that runs after content height is adjusted
+	});
+
+### Use Right Height events in your own scripts
+
+You can also call the Right Height adjust height function in your own scripts:
+
+	adjustContainerHeight(
+		container, // Node that contains the content areas. ex. document.querySelector('#content-wrapper')
+		options // Callbacks. Same options as those passed into the init() function.
+	);
+
+
+
+## Brower Compatability
+
+Right Height works in all modern browsers, and IE 9 and above.
+
+Right Height is built with modern JavaScript APIs, and uses progressive enhancement. If the JavaScript file fails to load, or if your site is viewed on older and less capable browsers, content areas will render at their default heights.
+
+
 
 ## Changelog
 * v2.0 (February 24, 2014)
@@ -20,5 +94,13 @@ Getting started with Right Height is really easy. [View the online tutorial)](ht
 * v0.1 (February 16, 2014)
   * Initial release: Work in Progress
 
+
+
 ## License
 Right Height is licensed under the [MIT License](http://gomakethings.com/mit/).
+
+
+
+## Older Docs
+
+* [Version 1](http://cferdinandi.github.io/right-height/archive/v1/)
