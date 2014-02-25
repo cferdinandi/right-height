@@ -52,7 +52,7 @@ Right Height includes smart defaults and works right out of the box. But if you 
 
 ### Global Settings
 
-You can pass options and callsbacks into Right Height through the `init()` function:
+You can pass options and callbacks into Right Height through the `init()` function:
 
 	rightHeight.init({
 		callbackBefore: function () {}, // Function that runs before content height is adjusted
