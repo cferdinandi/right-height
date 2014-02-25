@@ -70,7 +70,7 @@ You can also call the Right Height adjust height function in your own scripts:
 
 
 
-## Brower Compatability
+## Browser Compatability
 
 Right Height works in all modern browsers, and IE 9 and above.
 
