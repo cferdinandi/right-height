@@ -63,7 +63,7 @@ You can pass options and callsbacks into Right Height through the `init()` funct
 
 You can also call the Right Height adjust height function in your own scripts:
 
-	adjustContainerHeight(
+	rightHeight.adjustContainerHeight(
 		container, // Node that contains the content areas. ex. document.querySelector('#content-wrapper')
 		options // Callbacks. Same options as those passed into the init() function.
 	);
