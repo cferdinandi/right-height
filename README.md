@@ -80,7 +80,7 @@ rightHeight.adjustContainerHeight(
 
 
 
-## Browser Compatability
+## Browser Compatibility
 
 Right Height works in all modern browsers, and IE 9 and above.
 
