@@ -96,20 +96,20 @@ Right Height is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 
 ## Changelog
-* v2.0 (February 24, 2014)
-* Better public/private method namespacing.
-* Require `init()` call to run.
-* New API exposes additional methods for use in your own scripts.
-* Better documentation.
-* v1.1 (February 16, 2014)
-  * Added `style.minHeight` setting to reset to get more accurate height measurement and allow for fallback height on non-supporting browsers.
-* v1.0 (Feburary 16, 2014)
-  * Initial production-ready release.
-* v0.2 (February 16, 2014)
-  * Added window resize listener
-  * Work in Progress
-* v0.1 (February 16, 2014)
-  * Initial release: Work in Progress
+* v2.0 - February 24, 2014
+	* Better public/private method namespacing.
+	* Require `init()` call to run.
+	* New API exposes additional methods for use in your own scripts.
+	* Better documentation.
+* v1.1 - February 16, 2014
+	* Added `style.minHeight` setting to reset to get more accurate height measurement and allow for fallback height on non-supporting browsers.
+* v1.0 - Feburary 16, 2014
+	* Initial production-ready release.
+* v0.2 - February 16, 2014
+	* Added window resize listener
+	* Work in Progress
+* v0.1 - February 16, 2014
+	* Initial release: Work in Progress
 
 
 
