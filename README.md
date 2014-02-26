@@ -1,11 +1,11 @@
 # Right Height
-Dynamically set content areas of different lengths to the same height, by [Chris Ferdinandi](http://gomakethings.com). [View the Demo](http://cferdinandi.github.io/right-height/)
+Dynamically set content areas of different lengths to the same height, [View the Demo](http://cferdinandi.github.io/right-height/).
 
 1. [Getting Started](#getting-started)
-2. [Browser Compatability](#browser-compatability)
-3. [Options & Settings](#options-and-settings)
-4. [Changelog](#changelog)
-5. [License](#license)
+2. [Options & Settings](#options-and-settings)
+3. [Browser Compatibility](#browser-compatibility)
+4. [License](#license)
+5. [Changelog](#changelog)
 6. [Older Docs](#older-docs)
 
 
@@ -14,21 +14,25 @@ Dynamically set content areas of different lengths to the same height, by [Chris
 
 ### 1. Include Right Height on your site.
 
-	<script src="js/right-height.js"></script>
+```html
+<script src="js/right-height.js"></script>
+```
 
 ### 2. Add the markup to your HTML.
 
-	<div class="row" data-right-height>
-		<div class="grid-third" data-right-height-content>
-			Content 1
-		</div>
-		<div class="grid-third" data-right-height-content>
-			Content 2
-		</div>
-		<div class="grid-third" data-right-height-content>
-			Content 3
-		</div>
+```html
+<div class="row" data-right-height>
+	<div class="grid-third" data-right-height-content>
+		Content 1
 	</div>
+	<div class="grid-third" data-right-height-content>
+		Content 2
+	</div>
+	<div class="grid-third" data-right-height-content>
+		Content 3
+	</div>
+</div>
+```
 
 Add the `[data-right-height]` data attribute to the wrapper div for your content areas. This let's Right Height adjust heights for different sections of content independently from each other.
 
@@ -38,9 +42,11 @@ Give each content area that you want Right Height to adjust a `[data-right-heigh
 
 ### 3. Initialize Right Height.
 
-	<script>
-		rightHeight.init();
-	</script>
+```html
+<script>
+	rightHeight.init();
+</script>
+```
 
 In the footer of your page, after the content, initialize Right Height. And that's it, you're done. Nice work!
 
@@ -54,19 +60,23 @@ Right Height includes smart defaults and works right out of the box. But if you 
 
 You can pass options and callbacks into Right Height through the `init()` function:
 
-	rightHeight.init({
-		callbackBefore: function () {}, // Function that runs before content height is adjusted
-		callbackAfter: function () {} // Function that runs after content height is adjusted
-	});
+```javascript
+rightHeight.init({
+	callbackBefore: function () {}, // Function that runs before content height is adjusted
+	callbackAfter: function () {} // Function that runs after content height is adjusted
+});
+```
 
 ### Use Right Height events in your own scripts
 
 You can also call the Right Height adjust height function in your own scripts:
 
-	rightHeight.adjustContainerHeight(
-		container, // Node that contains the content areas. ex. document.querySelector('#content-wrapper')
-		options // Callbacks. Same options as those passed into the init() function.
-	);
+```javascript
+rightHeight.adjustContainerHeight(
+	container, // Node that contains the content areas. ex. document.querySelector('#content-wrapper')
+	options // Callbacks. Same options as those passed into the init() function.
+);
+```
 
 
 
@@ -75,6 +85,11 @@ You can also call the Right Height adjust height function in your own scripts:
 Right Height works in all modern browsers, and IE 9 and above.
 
 Right Height is built with modern JavaScript APIs, and uses progressive enhancement. If the JavaScript file fails to load, or if your site is viewed on older and less capable browsers, content areas will render at their default heights.
+
+
+
+## License
+Right Height is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 
 
@@ -93,11 +108,6 @@ Right Height is built with modern JavaScript APIs, and uses progressive enhancem
   * Work in Progress
 * v0.1 (February 16, 2014)
   * Initial release: Work in Progress
-
-
-
-## License
-Right Height is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 
 
