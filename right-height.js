@@ -1,6 +1,6 @@
 /* =============================================================
 
-	Right Height v2.0
+	Right Height v2.1
 	Dynamically set content areas of different lengths to the same height, by Chris Ferdinandi.
 	http://gomakethings.com
 
@@ -14,13 +14,10 @@ window.rightHeight = (function (window, document, undefined) {
 	'use strict';
 
 	// Default settings
-	// Private method
-	// Returns an {object}
-	var _defaults = function () {
-		return {
-			callbackBefore: function () {},
-			callbackAfter: function () {}
-		};
+	// Private {object} variable
+	var _defaults = {
+		callbackBefore: function () {},
+		callbackAfter: function () {}
 	};
 
 	// Merge default settings with user options
@@ -102,7 +99,7 @@ window.rightHeight = (function (window, document, undefined) {
 	var adjustContainerHeight = function ( container, options ) {
 
 		// Selectors and variables
-		options = _mergeObjects( _defaults(), options || {} ); // Merge user options with defaults
+		options = _mergeObjects( _defaults, options || {} ); // Merge user options with defaults
 		var contents = container.querySelectorAll('[data-right-height-content]');
 		var isStacked = _checkIfStacked(contents);
 		var height = '0';
@@ -159,7 +156,7 @@ window.rightHeight = (function (window, document, undefined) {
 		if ( 'querySelector' in document && 'addEventListener' in window && Array.prototype.forEach ) {
 
 			// Selectors and variables
-			options = _mergeObjects( _defaults(), options || {} ); // Merge user options with defaults
+			options = _mergeObjects( _defaults, options || {} ); // Merge user options with defaults
 			var containers = document.querySelectorAll('[data-right-height]'); // Groups of content
 			var eventTimeout; // Timer for resize event throttler
 
