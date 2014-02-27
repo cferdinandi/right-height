@@ -80,6 +80,13 @@ rightHeight.adjustContainerHeight(
 );
 ```
 
+**Example**
+
+```javascript
+var container = document.querySelector('#container');
+rightHeight.adjustContainerHeight( container );
+```
+
 
 
 ## Browser Compatibility
