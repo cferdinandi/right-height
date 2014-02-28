@@ -1,6 +1,6 @@
 /* =============================================================
 
-	Right Height v2.1
+	Right Height v2.2
 	Dynamically set content areas of different lengths to the same height, by Chris Ferdinandi.
 	http://gomakethings.com
 
@@ -161,7 +161,9 @@ window.rightHeight = (function (window, document, undefined) {
 			var eventTimeout; // Timer for resize event throttler
 
 			// Events and listeners
-			_runRightHeight( containers, options ); // Run Right Height on page load
+			document.addEventListener('DOMContentLoaded', function() {
+				_runRightHeight( containers, options ); // Run Right Height when DOM content fully loaded
+			});
 			window.addEventListener( 'resize', _eventThrottler.bind( null, eventTimeout, containers, options ), false); // Run Right Height on window resize
 
 		}

@@ -52,18 +52,6 @@ Give each content area that you want Right Height to adjust a `[data-right-heigh
 
 In the footer of your page, after the content, initialize Right Height. And that's it, you're done. Nice work!
 
-**Heads Up!**
-
-If you're content areas contain images, you may want to defer the initialization of Right Height until after all DOM content has loaded:
-
-```html
-<script>
-	document.addEventListener('DOMContentLoaded', function() {
-		rightHeight.init();
-	});
-</script>
-```
-
 
 
 ## Options and Settings
@@ -115,6 +103,8 @@ Right Height is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 
 ## Changelog
+* v2.2 - February 28, 2014
+	* Set initial resize to run once DOM content fully loaded (fixes setting of content to 0px high bug).
 * v2.1 - February 27, 2014
 	* Converted `defaults` to a literal object
 * v2.0 - February 24, 2014
