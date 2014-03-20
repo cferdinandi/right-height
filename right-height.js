@@ -1,6 +1,6 @@
 /* =============================================================
 
-	Right Height v2.2
+	Right Height v2.3
 	Dynamically set content areas of different lengths to the same height, by Chris Ferdinandi.
 	http://gomakethings.com
 
@@ -104,7 +104,7 @@ window.rightHeight = (function (window, document, undefined) {
 		var isStacked = _checkIfStacked(contents);
 		var height = '0';
 
-		options.callbackBefore(); // Run callbacks before adjusting content
+		options.callbackBefore( container ); // Run callbacks before adjusting content
 
 		// Reset each content area to its natural height
 		Array.prototype.forEach.call(contents, function (content, index) {
@@ -122,7 +122,7 @@ window.rightHeight = (function (window, document, undefined) {
 			});
 		}
 
-		options.callbackAfter(); // Run callbacks after adjust content
+		options.callbackAfter( container ); // Run callbacks after adjust content
 
 	};
 

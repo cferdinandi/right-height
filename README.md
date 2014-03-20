@@ -64,8 +64,8 @@ You can pass options and callbacks into Right Height through the `init()` functi
 
 ```javascript
 rightHeight.init({
-	callbackBefore: function () {}, // Function that runs before content height is adjusted
-	callbackAfter: function () {} // Function that runs after content height is adjusted
+	callbackBefore: function ( container ) {}, // Function that runs before content height is adjusted
+	callbackAfter: function ( container ) {} // Function that runs after content height is adjusted
 });
 ```
 
@@ -103,6 +103,9 @@ Right Height is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 
 ## Changelog
+
+* v2.3 - March 19, 2014
+	* Passed arguments into callback functions.
 * v2.2 - February 28, 2014
 	* Set initial resize to run once DOM content fully loaded (fixes setting of content to 0px high bug).
 * v2.1 - February 27, 2014
