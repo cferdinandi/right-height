@@ -161,7 +161,7 @@ window.rightHeight = (function (window, document, undefined) {
 			var eventTimeout; // Timer for resize event throttler
 
 			// Events and listeners
-			document.addEventListener('DOMContentLoaded', function() {
+			document.addEventListener('load', function() {
 				_runRightHeight( containers, options ); // Run Right Height when DOM content fully loaded
 			});
 			window.addEventListener( 'resize', _eventThrottler.bind( null, eventTimeout, containers, options ), false); // Run Right Height on window resize
