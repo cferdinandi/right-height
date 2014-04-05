@@ -1,5 +1,7 @@
 # Right Height
-Dynamically set content areas of different lengths to the same height. [View the demo](http://cferdinandi.github.io/right-height/).
+Dynamically set content areas of different lengths to the same height.
+
+[Download Right Height 3](https://github.com/cferdinandi/right-height/archive/master.zip) / [View the demo](http://cferdinandi.github.io/right-height/).
 
 **In This Documentation**
 
