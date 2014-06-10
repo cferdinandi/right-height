@@ -6,12 +6,13 @@ Dynamically set content areas of different lengths to the same height.
 **In This Documentation**
 
 1. [Getting Started](#getting-started)
-2. [Options & Settings](#options-and-settings)
-3. [Browser Compatibility](#browser-compatibility)
-4. [How to Contribute](#how-to-contribute)
-5. [License](#license)
-6. [Changelog](#changelog)
-7. [Older Docs](#older-docs)
+2. [Installing with Package Managers](#installing-with-package-managers)
+3. [Options & Settings](#options-and-settings)
+4. [Browser Compatibility](#browser-compatibility)
+5. [How to Contribute](#how-to-contribute)
+6. [License](#license)
+7. [Changelog](#changelog)
+8. [Older Docs](#older-docs)
 
 
 
@@ -54,6 +55,16 @@ Give each content area that you want Right Height to adjust a `[data-right-heigh
 ```
 
 In the footer of your page, after the content, initialize Right Height. And that's it, you're done. Nice work!
+
+
+
+## Installing with Package Managers
+
+You can install Right Height with your favorite package manager.
+
+* **NPM:** `npm install cferdinandi/right-height`
+* **Bower:** `bower install https://github.com/cferdinandi/right-height.git`
+* **Component:** `component install install cferdinandi/right-height`
 
 
 
@@ -113,6 +124,15 @@ Right Height is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 ## Changelog
 
+* v2.4.0 - June 9, 2014
+	* Converted to UMD module.
+	* Moved public APIs to exports variable.
+	* Improved feature test.
+	* Replaced `Array.prototype.forEach` hack with proper `forEach` function.
+	* General code optimizations for better minification and performance.
+	* Updated to JSDoc documentation.
+	* Updated to three number versioning system.
+	* Added package manager installation info.
 * v2.3 - March 19, 2014
 	* Passed arguments into callback functions.
 * v2.2 - February 28, 2014
