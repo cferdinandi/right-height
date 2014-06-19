@@ -64,7 +64,7 @@ You can install Right Height with your favorite package manager.
 
 * **NPM:** `npm install cferdinandi/right-height`
 * **Bower:** `bower install https://github.com/cferdinandi/right-height.git`
-* **Component:** `component install install cferdinandi/right-height`
+* **Component:** `component install cferdinandi/right-height`
 
 
 
@@ -124,6 +124,8 @@ Right Height is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 ## Changelog
 
+* v2.4.1 - June 19, 2014
+	* Fixed factory/root/UMD definition.
 * v2.4.0 - June 9, 2014
 	* Converted to UMD module.
 	* Moved public APIs to exports variable.
