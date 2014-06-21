@@ -1,4 +1,4 @@
-# Right Height
+# Right Height [![Build Status](https://travis-ci.org/cferdinandi/right-height.svg)](https://travis-ci.org/cferdinandi/right-height)
 Dynamically set content areas of different lengths to the same height.
 
 [Download Right Height 3](https://github.com/cferdinandi/right-height/archive/master.zip) / [View the demo](http://cferdinandi.github.io/right-height/).
@@ -17,6 +17,8 @@ Dynamically set content areas of different lengths to the same height.
 
 
 ## Getting Started
+
+Compiled and production-ready code can be found in the `dist` directory. The `src` directory contains development code. Unit tests are located in the `test` directory.
 
 ### 1. Include Right Height on your site.
 
@@ -124,6 +126,11 @@ Right Height is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 ## Changelog
 
+* v2.5.0 - June 20, 2014
+	* Converted to gulp.js workflow.
+	* Added unit testing.
+	* Updated naming conventions.
+	* Added minified versions of files.
 * v2.4.1 - June 19, 2014
 	* Fixed factory/root/UMD definition.
 * v2.4.0 - June 9, 2014

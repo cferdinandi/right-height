@@ -1,14 +1,3 @@
-/**
- *
- * Right Height v2.4.1
- * Dynamically set content areas of different lengths to the same height, by Chris Ferdinandi.
- * http://github.com/cferdinandi/right-height
- *
- * Free to use under the MIT License.
- * http://gomakethings.com/mit/
- *
- */
-
 (function (root, factory) {
 	if ( typeof define === 'function' && define.amd ) {
 		define('rightHeight', factory(root));
