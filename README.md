@@ -1,7 +1,7 @@
 # Right Height [![Build Status](https://travis-ci.org/cferdinandi/right-height.svg)](https://travis-ci.org/cferdinandi/right-height)
 Dynamically set content areas of different lengths to the same height.
 
-[Download Right Height 3](https://github.com/cferdinandi/right-height/archive/master.zip) / [View the demo](http://cferdinandi.github.io/right-height/).
+[Download Right Height 2](https://github.com/cferdinandi/right-height/archive/master.zip) / [View the demo](http://cferdinandi.github.io/right-height/).
 
 **In This Documentation**
 
@@ -126,6 +126,8 @@ Right Height is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 ## Changelog
 
+* v2.5.1 - June 28, 2014
+	* Fixed `extend()` method.
 * v2.5.0 - June 20, 2014
 	* Converted to gulp.js workflow.
 	* Added unit testing.
