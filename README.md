@@ -1,7 +1,7 @@
 # Right Height [![Build Status](https://travis-ci.org/cferdinandi/right-height.svg)](https://travis-ci.org/cferdinandi/right-height)
 Dynamically set content areas of different lengths to the same height.
 
-[Download Right Height 2](https://github.com/cferdinandi/right-height/archive/master.zip) / [View the demo](http://cferdinandi.github.io/right-height/).
+[Download Right Height](https://github.com/cferdinandi/right-height/archive/master.zip) / [View the demo](http://cferdinandi.github.io/right-height/).
 
 **In This Documentation**
 
@@ -23,8 +23,11 @@ Compiled and production-ready code can be found in the `dist` directory. The `sr
 ### 1. Include Right Height on your site.
 
 ```html
-<script src="js/right-height.js"></script>
+<script src="dist/js/bind-polyfill.js"></script>
+<script src="dist/js/right-height.js"></script>
 ```
+
+Right Height requires `bind-polyfill.js`, a polyfill that extends ECMAScript 5 API support to more browsers.
 
 ### 2. Add the markup to your HTML.
 
@@ -126,6 +129,9 @@ Right Height is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 ## Changelog
 
+* v2.5.2 - August 8, 2014
+	* Added polyfill for `Functions.prototype.bind`.
+	* Removed Sass paths from `gulpfile.js`.
 * v2.5.1 - June 28, 2014
 	* Fixed `extend()` method.
 * v2.5.0 - June 20, 2014
