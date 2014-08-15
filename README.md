@@ -129,6 +129,8 @@ Right Height is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 ## Changelog
 
+Right Height uses [semantic versioning](http://semver.org/).
+
 * v2.5.3 - August 15, 2014
 	* Added fix for UMD structure.
 * v2.5.2 - August 8, 2014
