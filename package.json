@@ -1,6 +1,6 @@
 {
 	"name": "Right-Height",
-	"version": "2.5.2",
+	"version": "2.5.3",
 	"description": "Dynamically set content areas of different lengths to the same height",
 	"author": {
 		"name": "Chris Ferdinandi",

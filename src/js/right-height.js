@@ -14,7 +14,7 @@
 	// Variables
 	//
 
-	var exports = {}; // Object for public APIs
+	var rightHeight = {}; // Object for public APIs
 	var supports = !!document.querySelector && !!root.addEventListener; // Feature test
 	var settings;
 
@@ -151,7 +151,7 @@
 	 * @param  {Element} container The wrapper that contains a set of content areas
 	 * @param  {Object} options
 	 */
-	exports.adjustContainerHeight = function ( container, options ) {
+	rightHeight.adjustContainerHeight = function ( container, options ) {
 
 		// Selectors and variables
 		var settings = extend( settings || defaults, options || {} );  // Merge user options with defaults
@@ -188,7 +188,7 @@
 	 */
 	var runRightHeight = function ( containers, settings ) {
 		forEach(containers, function (container) {
-			exports.adjustContainerHeight( container, settings );
+			rightHeight.adjustContainerHeight( container, settings );
 		});
 	};
 
@@ -213,7 +213,7 @@
 	 * @public
 	 * @param {Object} options User settings
 	 */
-	exports.init = function ( options ) {
+	rightHeight.init = function ( options ) {
 
 		// feature test
 		if ( !supports ) return;
@@ -236,6 +236,6 @@
 	// Public APIs
 	//
 
-	return exports;
+	return rightHeight;
 
 });
