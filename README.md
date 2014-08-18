@@ -90,7 +90,10 @@ rightHeight.init({
 
 ### Use Right Height events in your own scripts
 
-You can also call the Right Height adjust height function in your own scripts:
+You can also call the Right Height adjust height function in your own scripts.
+
+#### adjustContainerHeight()
+Set all content areas in a container to the same height.
 
 ```javascript
 rightHeight.adjustContainerHeight(
@@ -104,6 +107,13 @@ rightHeight.adjustContainerHeight(
 ```javascript
 var container = document.querySelector('#container');
 rightHeight.adjustContainerHeight( container );
+```
+
+#### destroy()
+Destroy the current `rightHeight.init()`.
+
+```javascript
+rightHeight.destroy();
 ```
 
 
@@ -131,6 +141,9 @@ Right Height is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 Right Height uses [semantic versioning](http://semver.org/).
 
+* v2.6.0 - August 18, 2014
+	* Added `destroy` method.
+	* Converted to Ruby Sass.
 * v2.5.3 - August 15, 2014
 	* Added fix for UMD structure.
 * v2.5.2 - August 8, 2014

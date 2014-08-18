@@ -16,7 +16,7 @@
 
 	var rightHeight = {}; // Object for public APIs
 	var supports = !!document.querySelector && !!root.addEventListener; // Feature test
-	var settings;
+	var settings, containers, eventTimeout;
 
 	// Default settings
 	var defaults = {
@@ -209,6 +209,30 @@
 	};
 
 	/**
+	 * Destroy the current initialization.
+	 * @public
+	 */
+	rightHeight.destroy = function () {
+
+		if (!settings) return;
+
+		// Reset content and remove event listeners
+		forEach(containers, function (container) {
+			var contents = container.querySelectorAll('[data-right-height-content]');
+			forEach(contents, function (content) {
+				resetHeight( content );
+			});
+		});
+		document.removeEventListener( 'resize', eventThrottler, false );
+
+		// Reset variables
+		settings = null;
+		containers = null;
+		eventTimeout = null;
+
+	};
+
+	/**
 	 * Initialize Right Height
 	 * @public
 	 * @param {Object} options User settings
@@ -218,15 +242,15 @@
 		// feature test
 		if ( !supports ) return;
 
+		// Destroy any existing initializations
+		rightHeight.destroy();
+
 		// Selectors and variables
 		settings = extend( defaults, options || {} ); // Merge user options with defaults
-		var containers = document.querySelectorAll('[data-right-height]'); // Groups of content
-		var eventTimeout; // Timer for resize event throttler
+		containers = document.querySelectorAll('[data-right-height]'); // Groups of content
 
 		// Events and listeners
-		window.addEventListener('load', function() {
-			runRightHeight( containers, options ); // Run Right Height when DOM content fully loaded
-		});
+		runRightHeight( containers, options ); // Run Right Height on load
 		window.addEventListener( 'resize', eventThrottler.bind( null, eventTimeout, containers, options ), false); // Run Right Height on window resize
 
 	};
