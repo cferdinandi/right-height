@@ -141,6 +141,8 @@ Right Height is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 Right Height uses [semantic versioning](http://semver.org/).
 
+* v2.6.1 - August 18, 2014
+	* Added `load` event listener.
 * v2.6.0 - August 18, 2014
 	* Added `destroy` method.
 	* Converted to Ruby Sass.

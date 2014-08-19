@@ -199,7 +199,7 @@
 	 * @param  {NodeList} containers A collection of content wrappers
 	 * @param  {Object} settings
 	 */
-	var eventThrottler = function ( eventTimeout, containers, settings ) {
+	var eventThrottler = function () {
 		if ( !eventTimeout ) {
 			eventTimeout = setTimeout(function() {
 				eventTimeout = null;
@@ -223,7 +223,7 @@
 				resetHeight( content );
 			});
 		});
-		document.removeEventListener( 'resize', eventThrottler, false );
+		root.removeEventListener('resize', eventThrottler, false);
 
 		// Reset variables
 		settings = null;
@@ -251,7 +251,8 @@
 
 		// Events and listeners
 		runRightHeight( containers, options ); // Run Right Height on load
-		window.addEventListener( 'resize', eventThrottler.bind( null, eventTimeout, containers, options ), false); // Run Right Height on window resize
+		root.addEventListener('load', runRightHeight.bind( null, containers, options ), false);
+		root.addEventListener('resize', eventThrottler, false); // Run Right Height on window resize
 
 	};
 
