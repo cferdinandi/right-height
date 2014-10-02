@@ -7,12 +7,13 @@ Dynamically set content areas of different lengths to the same height.
 
 1. [Getting Started](#getting-started)
 2. [Installing with Package Managers](#installing-with-package-managers)
-3. [Options & Settings](#options-and-settings)
-4. [Browser Compatibility](#browser-compatibility)
-5. [How to Contribute](#how-to-contribute)
-6. [License](#license)
-7. [Changelog](#changelog)
-8. [Older Docs](#older-docs)
+3. [Working with the Source Files](#working-with-the-source-files)
+4. [Options & Settings](#options-and-settings)
+5. [Browser Compatibility](#browser-compatibility)
+6. [How to Contribute](#how-to-contribute)
+7. [License](#license)
+8. [Changelog](#changelog)
+9. [Older Docs](#older-docs)
 
 
 
@@ -73,6 +74,28 @@ You can install Right Height with your favorite package manager.
 
 
 
+## Working with the Source Files
+
+If you would prefer, you can work with the development code in the `src` directory using the included [Gulp build system](http://gulpjs.com/). This compiles, lints, and minifies code, and runs unit tests.
+
+### Dependencies
+Make sure these are installed first.
+
+* [Node.js](http://nodejs.org)
+* [Ruby Sass](http://sass-lang.com/install)
+* [Gulp](http://gulpjs.com) `sudo npm install -g gulp`
+* [PhantomJS](http://phantomjs.org)
+
+### Quick Start
+
+1. In bash/terminal/command line, `cd` into your project directory.
+2. Run `npm install` to install required files.
+3. When it's done installing, run `gulp` to get going.
+
+Every time you want to run your tasks, run `gulp`.
+
+
+
 ## Options and Settings
 
 Right Height includes smart defaults and works right out of the box. But if you want to customize things, it also has a robust API that provides multiple ways for you to adjust the default options and settings.
@@ -110,7 +133,7 @@ rightHeight.adjustContainerHeight( container );
 ```
 
 #### destroy()
-Destroy the current `rightHeight.init()`.
+Destroy the current `rightHeight.init()`. This is called automatically during the init function to remove any existing initializations.
 
 ```javascript
 rightHeight.destroy();
@@ -141,6 +164,9 @@ Right Height is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 Right Height uses [semantic versioning](http://semver.org/).
 
+* v2.6.2 - October 2, 2014
+	* Fixed CommonJS bug.
+	* Updated Gulp with lazypipe.
 * v2.6.1 - August 18, 2014
 	* Added `load` event listener.
 * v2.6.0 - August 18, 2014
