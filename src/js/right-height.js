@@ -186,7 +186,7 @@
 	 * @param  {NodeList} containers A collection of content wrappers
 	 * @param  {Object} settings
 	 */
-	var runRightHeight = function ( containers, settings ) {
+	var runRightHeight = function () {
 		forEach(containers, function (container) {
 			rightHeight.adjustContainerHeight( container, settings );
 		});
@@ -251,7 +251,7 @@
 
 		// Events and listeners
 		runRightHeight( containers, options ); // Run Right Height on load
-		root.addEventListener('load', runRightHeight.bind( null, containers, options ), false);
+		root.addEventListener('load', runRightHeight, false);
 		root.addEventListener('resize', eventThrottler, false); // Run Right Height on window resize
 
 	};
