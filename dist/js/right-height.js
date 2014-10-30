@@ -125,8 +125,8 @@
 	 * @param  {Element} content The content area to set to height: auto
 	 */
 	var resetHeight = function ( content ) {
-		content.style.height = 'auto';
-		content.style.minHeight = '0';
+		content.style.height = '';
+		content.style.minHeight = '';
 	};
 
 	/**
