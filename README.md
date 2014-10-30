@@ -161,6 +161,8 @@ Right Height is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 Right Height uses [semantic versioning](http://semver.org/).
 
+* v2.6.4 - October 30, 2014
+	* Fixed issue with image height not being set.
 * v2.6.3 - October 17, 2014
 	* Removed `.bind` dependency and polyfill.
 	* Updated `gulpfile.js` tasks and namespacing.

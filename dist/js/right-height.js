@@ -1,5 +1,5 @@
 /**
- * Right-Height v2.6.3
+ * Right-Height v2.6.4
  * Dynamically set content areas of different lengths to the same height, by Chris Ferdinandi.
  * http://github.com/cferdinandi/right-height
  * 
