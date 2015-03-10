@@ -1,5 +1,5 @@
 /**
- * Right-Height v2.6.4
+ * Right-Height v2.6.5
  * Dynamically set content areas of different lengths to the same height, by Chris Ferdinandi.
  * http://github.com/cferdinandi/right-height
  * 
@@ -15,7 +15,7 @@
 	} else {
 		root.rightHeight = factory(root);
 	}
-})(window || this, function (root) {
+})(this, function (root) {
 
 	'use strict';
 

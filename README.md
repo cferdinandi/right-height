@@ -161,6 +161,8 @@ Right Height is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 Right Height uses [semantic versioning](http://semver.org/).
 
+* v2.6.5 - March 9, 2015
+	* Fixed UMD wrapper.
 * v2.6.4 - October 30, 2014
 	* Fixed issue with image height not being set.
 * v2.6.3 - October 17, 2014
