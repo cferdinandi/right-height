@@ -6,7 +6,7 @@
 	} else {
 		root.rightHeight = factory(root);
 	}
-})(window || this, function (root) {
+})(this, function (root) {
 
 	'use strict';
 
