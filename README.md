@@ -161,6 +161,8 @@ Right Height is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 Right Height uses [semantic versioning](http://semver.org/).
 
+* v2.6.6 - May 13, 2015
+	* Fixed Browserify `window` bug.
 * v2.6.5 - March 9, 2015
 	* Fixed UMD wrapper.
 * v2.6.4 - October 30, 2014
