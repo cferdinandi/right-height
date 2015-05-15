@@ -12,8 +12,7 @@ Dynamically set content areas of different lengths to the same height.
 5. [Browser Compatibility](#browser-compatibility)
 6. [How to Contribute](#how-to-contribute)
 7. [License](#license)
-8. [Changelog](#changelog)
-9. [Older Docs](#older-docs)
+8. [Older Docs](#older-docs)
 
 
 
@@ -154,73 +153,6 @@ In lieu of a formal style guide, take care to maintain the existing coding style
 
 ## License
 Right Height is licensed under the [MIT License](http://gomakethings.com/mit/).
-
-
-
-## Changelog
-
-Right Height uses [semantic versioning](http://semver.org/).
-
-* v2.6.6 - May 13, 2015
-	* Fixed Browserify `window` bug.
-* v2.6.5 - March 9, 2015
-	* Fixed UMD wrapper.
-* v2.6.4 - October 30, 2014
-	* Fixed issue with image height not being set.
-* v2.6.3 - October 17, 2014
-	* Removed `.bind` dependency and polyfill.
-	* Updated `gulpfile.js` tasks and namespacing.
-* v2.6.2 - October 2, 2014
-	* Fixed CommonJS bug.
-	* Updated Gulp with lazypipe.
-* v2.6.1 - August 18, 2014
-	* Added `load` event listener.
-* v2.6.0 - August 18, 2014
-	* Added `destroy` method.
-	* Converted to Ruby Sass.
-* v2.5.3 - August 15, 2014
-	* Added fix for UMD structure.
-* v2.5.2 - August 8, 2014
-	* Added polyfill for `Functions.prototype.bind`.
-	* Removed Sass paths from `gulpfile.js`.
-* v2.5.1 - June 28, 2014
-	* Fixed `extend()` method.
-* v2.5.0 - June 20, 2014
-	* Converted to gulp.js workflow.
-	* Added unit testing.
-	* Updated naming conventions.
-	* Added minified versions of files.
-* v2.4.1 - June 19, 2014
-	* Fixed factory/root/UMD definition.
-* v2.4.0 - June 9, 2014
-	* Converted to UMD module.
-	* Moved public APIs to exports variable.
-	* Improved feature test.
-	* Replaced `Array.prototype.forEach` hack with proper `forEach` function.
-	* General code optimizations for better minification and performance.
-	* Updated to JSDoc documentation.
-	* Updated to three number versioning system.
-	* Added package manager installation info.
-* v2.3 - March 19, 2014
-	* Passed arguments into callback functions.
-* v2.2 - February 28, 2014
-	* Set initial resize to run once DOM content fully loaded (fixes setting of content to 0px high bug).
-* v2.1 - February 27, 2014
-	* Converted `defaults` to a literal object
-* v2.0 - February 24, 2014
-	* Better public/private method namespacing.
-	* Require `init()` call to run.
-	* New API exposes additional methods for use in your own scripts.
-	* Better documentation.
-* v1.1 - February 16, 2014
-	* Added `style.minHeight` setting to reset to get more accurate height measurement and allow for fallback height on non-supporting browsers.
-* v1.0 - Feburary 16, 2014
-	* Initial production-ready release.
-* v0.2 - February 16, 2014
-	* Added window resize listener
-	* Work in Progress
-* v0.1 - February 16, 2014
-	* Initial release: Work in Progress
 
 
 
