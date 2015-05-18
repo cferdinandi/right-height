@@ -12,7 +12,6 @@ Dynamically set content areas of different lengths to the same height.
 5. [Browser Compatibility](#browser-compatibility)
 6. [How to Contribute](#how-to-contribute)
 7. [License](#license)
-8. [Older Docs](#older-docs)
 
 
 
@@ -152,10 +151,5 @@ In lieu of a formal style guide, take care to maintain the existing coding style
 
 
 ## License
-Right Height is licensed under the [MIT License](http://gomakethings.com/mit/).
 
-
-
-## Older Docs
-
-* [Version 1](http://cferdinandi.github.io/right-height/archive/v1/)
+The code is available under the [MIT License](LICENSE.md).
