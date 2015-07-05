@@ -20,70 +20,13 @@
 
 	// Default settings
 	var defaults = {
-		callbackBefore: function () {},
-		callbackAfter: function () {}
+		callback: function () {}
 	};
 
 
 	//
 	// Methods
 	//
-
-	/**
-	 * A simple forEach() implementation for Arrays, Objects and NodeLists
-	 * @private
-	 * @param {Array|Object|NodeList} collection Collection of items to iterate
-	 * @param {Function} callback Callback function for each iteration
-	 * @param {Array|Object|NodeList} scope Object/NodeList/Array that forEach is iterating over (aka `this`)
-	 */
-	var forEach = function (collection, callback, scope) {
-		if (Object.prototype.toString.call(collection) === '[object Object]') {
-			for (var prop in collection) {
-				if (Object.prototype.hasOwnProperty.call(collection, prop)) {
-					callback.call(scope, collection[prop], prop, collection);
-				}
-			}
-		} else {
-			for (var i = 0, len = collection.length; i < len; i++) {
-				callback.call(scope, collection[i], i, collection);
-			}
-		}
-	};
-
-	/**
-	 * Merge defaults with user options
-	 * @private
-	 * @param {Object} defaults Default settings
-	 * @param {Object} options User options
-	 * @returns {Object} Merged values of defaults and options
-	 */
-	var extend = function ( defaults, options ) {
-		var extended = {};
-		forEach(defaults, function (value, prop) {
-			extended[prop] = defaults[prop];
-		});
-		forEach(options, function (value, prop) {
-			extended[prop] = options[prop];
-		});
-		return extended;
-	};
-
-	/**
-	 * Calculate distance to top of page
-	 * @private
-	 * @param  {Element} content The content area to get the distance for
-	 * @return {Number} Distance to the top of the document
-	 */
-	var getDistanceToTop = function ( content ) {
-		var distance = 0;
-		if (content.offsetParent) {
-			do {
-				distance += content.offsetTop;
-				content = content.offsetParent;
-			} while (content);
-		}
-		return distance;
-	};
 
 	/**
 	 * Check if a group of content areas are stacked
@@ -99,7 +42,7 @@
 
 		// Determine if content containers are stacked
 		if ( contentFirst && contentSecond ) {
-			if ( getDistanceToTop(contentFirst) - getDistanceToTop(contentSecond) === 0 ) {
+			if ( buoy.getOffsetTop(contentFirst) - buoy.getOffsetTop(contentSecond) === 0 ) {
 				return false;
 			} else {
 				return true;
@@ -154,29 +97,27 @@
 	rightHeight.adjustContainerHeight = function ( container, options ) {
 
 		// Selectors and variables
-		var settings = extend( settings || defaults, options || {} );  // Merge user options with defaults
+		var settings = buoy.extend( settings || defaults, options || {} );  // Merge user options with defaults
 		var contents = container.querySelectorAll('[data-right-height-content]');
 		var isStacked = checkIfStacked(contents);
 		var height = '0';
 
-		settings.callbackBefore( container ); // Run callbacks before adjusting content
-
 		// Reset each content area to its natural height
-		forEach(contents, function (content) {
+		buoy.forEach(contents, function (content) {
 			resetHeight( content );
 		});
 
 		// If content areas are not stacked, give them equal heights
 		if ( !isStacked ) {
-			forEach(contents, function (content) {
+			buoy.forEach(contents, function (content) {
 				height = getHeight( content, height );
 			});
-			forEach(contents, function (content) {
+			buoy.forEach(contents, function (content) {
 				setHeight( content, height );
 			});
 		}
 
-		settings.callbackAfter( container ); // Run callbacks after adjust content
+		settings.callback( container ); // Run callbacks after adjust content
 
 	};
 
@@ -187,7 +128,7 @@
 	 * @param  {Object} settings
 	 */
 	var runRightHeight = function () {
-		forEach(containers, function (container) {
+		buoy.forEach(containers, function (container) {
 			rightHeight.adjustContainerHeight( container, settings );
 		});
 	};
@@ -217,9 +158,9 @@
 		if (!settings) return;
 
 		// Reset content and remove event listeners
-		forEach(containers, function (container) {
+		buoy.forEach(containers, function (container) {
 			var contents = container.querySelectorAll('[data-right-height-content]');
-			forEach(contents, function (content) {
+			buoy.forEach(contents, function (content) {
 				resetHeight( content );
 			});
 		});
@@ -246,7 +187,7 @@
 		rightHeight.destroy();
 
 		// Selectors and variables
-		settings = extend( defaults, options || {} ); // Merge user options with defaults
+		settings = buoy.extend( defaults, options || {} ); // Merge user options with defaults
 		containers = document.querySelectorAll('[data-right-height]'); // Groups of content
 
 		// Events and listeners
