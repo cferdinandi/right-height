@@ -22,11 +22,8 @@ Compiled and production-ready code can be found in the `dist` directory. The `sr
 ### 1. Include Right Height on your site.
 
 ```html
-<script src="dist/js/buoy.js"></script>
 <script src="dist/js/right-height.js"></script>
 ```
-
-Right Height requires [Buoy](https://github.com/cferdinandi/buoy), a lightweight collection of helper methods for getting stuff done with native JavaScript.
 
 ### 2. Add the markup to your HTML.
 
