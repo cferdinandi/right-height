@@ -1,17 +1,7 @@
 # Right Height [![Build Status](https://travis-ci.org/cferdinandi/right-height.svg)](https://travis-ci.org/cferdinandi/right-height)
 Dynamically set content areas of different lengths to the same height.
 
-[Download Right Height](https://github.com/cferdinandi/right-height/archive/master.zip) / [View the demo](http://cferdinandi.github.io/right-height/).
-
-**In This Documentation**
-
-1. [Getting Started](#getting-started)
-2. [Installing with Package Managers](#installing-with-package-managers)
-3. [Working with the Source Files](#working-with-the-source-files)
-4. [Options & Settings](#options-and-settings)
-5. [Browser Compatibility](#browser-compatibility)
-6. [How to Contribute](#how-to-contribute)
-7. [License](#license)
+[Download Right Height](https://github.com/cferdinandi/right-height/archive/master.zip) / [View the demo](http://cferdinandi.github.io/right-height/)
 
 
 
@@ -86,6 +76,7 @@ Make sure these are installed first.
 3. When it's done installing, run one of the task runners to get going:
 	* `gulp` manually compiles files.
 	* `gulp watch` automatically compiles files when changes are made and applies changes using [LiveReload](http://livereload.com/).
+	* `gulp test` compiles files and runs unit tests.
 
 
 
@@ -99,6 +90,8 @@ You can pass options and callbacks into Right Height through the `init()` functi
 
 ```javascript
 rightHeight.init({
+	selector: '[data-right-height]', // The selector for content containers (must use a valid CSS selector)
+	selectorContent: '[data-right-height-content]', // The selector for content (must use a valid CSS selector)
 	callback: function ( container ) {} // Function that runs after content height is adjusted
 });
 ```

@@ -15,11 +15,13 @@
 	//
 
 	var rightHeight = {}; // Object for public APIs
-	var supports = !!document.querySelector && !!root.addEventListener; // Feature test
+	var supports = 'querySelector' in document && 'addEventListener' in root; // Feature test
 	var settings, containers, eventTimeout;
 
 	// Default settings
 	var defaults = {
+		selector: '[data-right-height]',
+		selectorContent: '[data-right-height-content]',
 		callback: function () {}
 	};
 
@@ -183,7 +185,7 @@
 
 		// Selectors and variables
 		var settings = extend( settings || defaults, options || {} );  // Merge user options with defaults
-		var contents = container.querySelectorAll('[data-right-height-content]');
+		var contents = container.querySelectorAll( settings.selectorContent );
 		var isStacked = checkIfStacked(contents);
 		var height = '0';
 
@@ -244,7 +246,7 @@
 
 		// Reset content and remove event listeners
 		forEach(containers, function (container) {
-			var contents = container.querySelectorAll('[data-right-height-content]');
+			var contents = container.querySelectorAll( settings.selectorContent );
 			forEach(contents, function (content) {
 				resetHeight( content );
 			});
@@ -273,7 +275,7 @@
 
 		// Selectors and variables
 		settings = extend( defaults, options || {} ); // Merge user options with defaults
-		containers = document.querySelectorAll('[data-right-height]'); // Groups of content
+		containers = document.querySelectorAll( settings.selector ); // Groups of content
 
 		// Events and listeners
 		runRightHeight( containers, options ); // Run Right Height on load
