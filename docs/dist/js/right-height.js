@@ -1,6 +1,6 @@
 /*!
- * Right-Height v4.1.0: Dynamically set content areas of different lengths to the same height
- * (c) 2015 Chris Ferdinandi
+ * Right-Height v4.2.0: Dynamically set content areas of different lengths to the same height
+ * (c) 2016 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/right-height
  */
@@ -104,6 +104,28 @@
 		return extended;
 
 	};
+
+
+	/**
+	 * Wait until document is ready to run method
+	 * @private
+	 * @param  {Function} fn Method to run
+	 */
+	var ready = function ( fn ) {
+
+		// Sanity check
+		if ( typeof fn !== 'function' ) return;
+
+		// If document is already loaded, run method
+		if ( document.readyState === 'complete'  ) {
+			return fn();
+		}
+
+		// Otherwise, wait until document is loaded
+		document.addEventListener( 'DOMContentLoaded', fn, false );
+
+	};
+
 
 	/**
 	 * Get an element's distance from the top of the Document.
@@ -219,9 +241,9 @@
 	 * For each group of content, adjust the content area heights
 	 * @private
 	 * @param  {NodeList} containers A collection of content wrappers
-	 * @param  {Object} settings
+	 * @param  {Object}   settings
 	 */
-	var runRightHeight = function () {
+	var runRightHeight = function ( containers, settings ) {
 		forEach(containers, function (container) {
 			rightHeight.adjustContainerHeight( container, settings );
 		});
@@ -285,8 +307,9 @@
 		containers = document.querySelectorAll( settings.selector ); // Groups of content
 
 		// Events and listeners
-		runRightHeight( containers, options ); // Run Right Height on load
-		root.addEventListener('load', runRightHeight, false);
+		ready(function() {
+			runRightHeight( containers, options ); // Run Right Height on load
+		});
 		root.addEventListener('resize', eventThrottler, false); // Run Right Height on window resize
 
 	};
