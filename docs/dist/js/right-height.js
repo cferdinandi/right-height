@@ -1,5 +1,5 @@
 /*!
- * Right-Height v4.2.0: Dynamically set content areas of different lengths to the same height
+ * Right-Height v4.3.0: Dynamically set content areas of different lengths to the same height
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/right-height
@@ -117,7 +117,7 @@
 		if ( typeof fn !== 'function' ) return;
 
 		// If document is already loaded, run method
-		if ( document.readyState === 'complete'  ) {
+		if ( document.readyState === 'interactive'  ) {
 			return fn();
 		}
 

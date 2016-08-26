@@ -110,7 +110,7 @@
 		if ( typeof fn !== 'function' ) return;
 
 		// If document is already loaded, run method
-		if ( document.readyState === 'complete'  ) {
+		if ( document.readyState === 'interactive'  ) {
 			return fn();
 		}
 
