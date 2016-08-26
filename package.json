@@ -1,6 +1,6 @@
 {
 	"name": "Right-Height",
-	"version": "4.2.0",
+	"version": "4.3.0",
 	"description": "Dynamically set content areas of different lengths to the same height",
 	"main": "./dist/js/right-height.min.js",
 	"author": {
