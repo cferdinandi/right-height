@@ -1,5 +1,5 @@
 /*!
- * Right-Height v4.3.0: Dynamically set content areas of different lengths to the same height
+ * Right-Height v4.4.0: Dynamically set content areas of different lengths to the same height
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/right-height
@@ -13,7 +13,7 @@
 	} else {
 		root.rightHeight = factory(root);
 	}
-})(typeof global !== "undefined" ? global : this.window || this.global, function (root) {
+})(typeof global !== "undefined" ? global : this.window || this.global, (function (root) {
 
 	'use strict';
 
@@ -219,18 +219,18 @@
 		var height = '0';
 
 		// Reset each content area to its natural height
-		forEach(contents, function (content) {
+		forEach(contents, (function (content) {
 			resetHeight( content );
-		});
+		}));
 
 		// If content areas are not stacked, give them equal heights
 		if ( !isStacked ) {
-			forEach(contents, function (content) {
+			forEach(contents, (function (content) {
 				height = getHeight( content, height );
-			});
-			forEach(contents, function (content) {
+			}));
+			forEach(contents, (function (content) {
 				setHeight( content, height );
-			});
+			}));
 		}
 
 		settings.callback( container ); // Run callbacks after adjust content
@@ -244,9 +244,9 @@
 	 * @param  {Object}   settings
 	 */
 	var runRightHeight = function ( containers, settings ) {
-		forEach(containers, function (container) {
+		forEach(containers, (function (container) {
 			rightHeight.adjustContainerHeight( container, settings );
-		});
+		}));
 	};
 
 	/**
@@ -258,10 +258,10 @@
 	 */
 	var eventThrottler = function () {
 		if ( !eventTimeout ) {
-			eventTimeout = setTimeout(function() {
+			eventTimeout = setTimeout((function() {
 				eventTimeout = null;
 				runRightHeight( containers, settings );
-			}, 66);
+			}), 66);
 		}
 	};
 
@@ -274,12 +274,12 @@
 		if (!settings) return;
 
 		// Reset content and remove event listeners
-		forEach(containers, function (container) {
+		forEach(containers, (function (container) {
 			var contents = container.querySelectorAll( settings.selectorContent );
-			forEach(contents, function (content) {
+			forEach(contents, (function (content) {
 				resetHeight( content );
-			});
-		});
+			}));
+		}));
 		root.removeEventListener('resize', eventThrottler, false);
 
 		// Reset variables
@@ -307,9 +307,9 @@
 		containers = document.querySelectorAll( settings.selector ); // Groups of content
 
 		// Events and listeners
-		ready(function() {
+		ready((function() {
 			runRightHeight( containers, options ); // Run Right Height on load
-		});
+		}));
 		root.addEventListener('resize', eventThrottler, false); // Run Right Height on window resize
 
 	};
@@ -321,4 +321,4 @@
 
 	return rightHeight;
 
-});
+}));
