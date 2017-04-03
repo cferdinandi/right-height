@@ -4,6 +4,13 @@ Dynamically set content areas of different lengths to the same height.
 [Download Right Height](https://github.com/cferdinandi/right-height/archive/master.zip) / [View the demo](http://cferdinandi.github.io/right-height/)
 
 
+<hr>
+
+### Want to learn how to write your own vanilla JS plugins? Check out ["The Vanilla JS Guidebook"](https://gomakethings.com/vanilla-js-guidebook/) and level-up as a web developer. 🚀
+
+<hr>
+
+
 
 ## Getting Started
 
