@@ -59,31 +59,40 @@
 						<p class="padding-top"><em><strong>Want to learn how to write your own vanilla JS plugins?</strong> Get my free <a href="https://gomakethings.com/newsletter/">daily developer tips</a> and level-up as a web developer.</em> 🚀</p>
 					</header>
 
-				<main id="main" class="grid-three-fourths padding-top sticky-body tabindex" tabindex="-1" data-toc-content><h1 id="right-height">Right Height</h1>
-<p>Dynamically set content areas of different lengths to the same height. Right Height now supports nested content areas.</p>
+				<main id="main" class="grid-three-fourths padding-top sticky-body tabindex" tabindex="-1" data-toc-content><h1 id="options-and-settings">Options and Settings</h1>
+<p>Right Height includes smart defaults and works right out of the box. But if you want to customize things, it also has a robust API that provides multiple ways for you to adjust the default options and settings.</p>
 <hr>
 
-<h2 id="demo">Demo</h2>
-<div class="row" data-right-height>
-    <div class="grid-third">
-        <div class="hero" data-right-height-content>
-            <h2>Content 1</h2>
-            <p>The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs.</p>
-        </div>
-    </div>
-    <div class="grid-third">
-        <div class="hero" data-right-height-content>
-            <h2>Content 2</h2>
-            <p>Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt fox. Bright vixens jump; dozy fowl quack. Quick wafting zephyrs vex bold Jim. Quick zephyrs blow, vexing daft Jim. Sex-charged fop blew my junk TV quiz. How quickly daft jumping zebras vex. Two driven jocks help fax my big quiz.</p>
-        </div>
-    </div>
-    <div class="grid-third">
-        <div class="hero" data-right-height-content>
-            <h2>Content 3</h2>
-            <p>Quick, Baz, get my woven flax jodhpurs! &quot;Now fax quiz Jack!&quot; my brave ghost pled. Five quacking zephyrs jolt my wax bed. Flummoxed by job, kvetching W. zaps Iraq. Cozy sphinx waves quart jug of bad milk. A very bad quack might jinx zippy fowls.</p>
-        </div>
-    </div>
-</div>					</section><!-- /.container -->
+<h2 id="global-settings">Global Settings</h2>
+<p>You can pass options and callbacks into Right Height through the <code>init()</code> function:</p>
+<pre><code class="lang-javascript">rightHeight.init({
+    // Selectors
+    selector: &#39;[data-right-height]&#39;, // The selector for content containers (must use a valid CSS selector)
+    selectorContent: &#39;[data-right-height-content]&#39;, // The selector for content (must use a valid CSS selector)
+
+    // Calbacks
+    before: function ( container ) {}, // Function that runs before content height is adjusted
+    after: function ( container ) {} // Function that runs after content height is adjusted
+});
+</code></pre>
+<h2 id="use-right-height-functions-in-your-own-scripts">Use Right Height functions in your own scripts</h2>
+<p>You can also call the Right Height adjust height function in your own scripts.</p>
+<h3 id="adjustcontainerheight-">adjustContainerHeight()</h3>
+<p>Set all content areas in a container to the same height.</p>
+<pre><code class="lang-javascript">rightHeight.adjustContainerHeight(
+    container, // Node that contains the content areas. ex. document.querySelector(&#39;#content-wrapper&#39;)
+    options // Callbacks. Same options as those passed into the init() function.
+);
+</code></pre>
+<p><strong>Example</strong></p>
+<pre><code class="lang-javascript">var container = document.querySelector(&#39;#container&#39;);
+rightHeight.adjustContainerHeight( container );
+</code></pre>
+<h3 id="destroy-">destroy()</h3>
+<p>Destroy the current <code>rightHeight.init()</code>. This is called automatically during the init function to remove any existing initializations.</p>
+<pre><code class="lang-javascript">rightHeight.destroy();
+</code></pre>
+					</section><!-- /.container -->
 
 					<footer class="bg-muted padding-top padding-bottom">
 
