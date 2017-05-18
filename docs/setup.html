@@ -59,31 +59,66 @@
 						<p class="padding-top"><em><strong>Want to learn how to write your own vanilla JS plugins?</strong> Get my free <a href="https://gomakethings.com/newsletter/">daily developer tips</a> and level-up as a web developer.</em> 🚀</p>
 					</header>
 
-				<main id="main" class="grid-three-fourths padding-top sticky-body tabindex" tabindex="-1" data-toc-content><h1 id="right-height">Right Height</h1>
-<p>Dynamically set content areas of different lengths to the same height. Right Height now supports nested content areas.</p>
+				<main id="main" class="grid-three-fourths padding-top sticky-body tabindex" tabindex="-1" data-toc-content><h1 id="getting-started">Getting Started</h1>
+<p>Compiled and production-ready code can be found in the <code>dist</code> directory. The <code>src</code> directory contains development code.</p>
 <hr>
 
-<h2 id="demo">Demo</h2>
-<div class="row" data-right-height>
-    <div class="grid-third">
-        <div class="hero" data-right-height-content>
-            <h2>Content 1</h2>
-            <p>The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs.</p>
-        </div>
-    </div>
-    <div class="grid-third">
-        <div class="hero" data-right-height-content>
-            <h2>Content 2</h2>
-            <p>Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt fox. Bright vixens jump; dozy fowl quack. Quick wafting zephyrs vex bold Jim. Quick zephyrs blow, vexing daft Jim. Sex-charged fop blew my junk TV quiz. How quickly daft jumping zebras vex. Two driven jocks help fax my big quiz.</p>
-        </div>
-    </div>
-    <div class="grid-third">
-        <div class="hero" data-right-height-content>
-            <h2>Content 3</h2>
-            <p>Quick, Baz, get my woven flax jodhpurs! &quot;Now fax quiz Jack!&quot; my brave ghost pled. Five quacking zephyrs jolt my wax bed. Flummoxed by job, kvetching W. zaps Iraq. Cozy sphinx waves quart jug of bad milk. A very bad quack might jinx zippy fowls.</p>
-        </div>
-    </div>
-</div>					</section><!-- /.container -->
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="1-include-right-height-on-your-site-">1. Include Right Height on your site.</h3>
+<pre><code class="lang-markup">&lt;script src=&quot;dist/js/right-height.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h3 id="2-add-the-markup-to-your-html-">2. Add the markup to your HTML.</h3>
+<pre><code class="lang-html">&lt;div class=&quot;row&quot; data-right-height&gt;
+    &lt;div class=&quot;grid-third&quot; data-right-height-content&gt;
+        Content 1
+    &lt;/div&gt;
+    &lt;div class=&quot;grid-third&quot; data-right-height-content&gt;
+        Content 2
+    &lt;/div&gt;
+    &lt;div class=&quot;grid-third&quot; data-right-height-content&gt;
+        Content 3
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>Add the <code>[data-right-height]</code> data attribute to the wrapper div for your content areas. This let&#39;s Right Height adjust heights for different sections of content independently from each other.</p>
+<p>Give each content area that you want Right Height to adjust a <code>[data-right-height-content]</code> data attribute.</p>
+<p><em>You can style your content areas (and their wrappers) however you see fit. The <code>.row</code> and <code>.grid-third</code> classes are used for demonstration purposes only.</em></p>
+<h3 id="3-initialize-right-height-">3. Initialize Right Height.</h3>
+<p>In the footer of your page, after the content, initialize Right Height. And that&#39;s it, you&#39;re done. Nice work!</p>
+<pre><code class="lang-markup">&lt;script&gt;
+    rightHeight.init();
+&lt;/script&gt;
+</code></pre>
+<hr>
+
+
+<h2 id="using-a-package-manager-or-module-bundler">Using a Package Manager or Module Bundler</h2>
+<p>Install Right Height with your favorite package manager or module bundler directly from NPM.</p>
+<pre><code class="lang-bash">npm install right-height
+</code></pre>
+<hr>
+
+
+<h2 id="working-with-the-source-files">Working with the Source Files</h2>
+<p>If you would prefer, you can work with the development code in the <code>src</code> directory using the included <a href="http://gulpjs.com/">Gulp build system</a>. This compiles, lints, and minifies code.</p>
+<h3 id="dependencies">Dependencies</h3>
+<p>Make sure these are installed first.</p>
+<ul>
+<li><a href="http://nodejs.org">Node.js</a></li>
+<li><a href="http://gulpjs.com">Gulp</a> <code>sudo npm install -g gulp</code></li>
+</ul>
+<h3 id="using-gulp">Using Gulp</h3>
+<ol>
+<li>In bash/terminal/command line, <code>cd</code> into your project directory.</li>
+<li>Run <code>npm install</code> to install required files.</li>
+<li>When it&#39;s done installing, run one of the task runners to get going:<ul>
+<li><code>gulp</code> manually compiles files.</li>
+<li><code>gulp watch</code> automatically compiles files when changes are made and applies changes using <a href="http://livereload.com/">LiveReload</a>.</li>
+</ul>
+</li>
+</ol>
+<p>Compiled and production-ready code can be found in the <code>dist</code> directory. The <code>src</code> directory contains development code.</p>
+					</section><!-- /.container -->
 
 					<footer class="bg-muted padding-top padding-bottom">
 

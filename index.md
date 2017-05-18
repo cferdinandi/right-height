@@ -1,11 +1,3 @@
-# Right Height
-
-Dynamically set content areas of different lengths to the same height. Right Height now supports nested content areas.
-
-<hr>
-
-## Demo
-
 <div class="row" data-right-height>
 	<div class="grid-third">
 		<div class="hero" data-right-height-content>

@@ -1,7 +1,7 @@
 /*!
- * Right-Height v4.4.1: Dynamically set content areas of different lengths to the same height
- * (c) 2016 Chris Ferdinandi
- * MIT License
+ * right-height v5.0.0: Dynamically set content areas of different lengths to the same height
+ * (c) 2017 Chris Ferdinandi
+ * GPL-3.0 License
  * http://github.com/cferdinandi/right-height
  */
 
@@ -23,13 +23,15 @@
 
 	var rightHeight = {}; // Object for public APIs
 	var supports = 'querySelector' in document && 'addEventListener' in root; // Feature test
+	var activeContainer = 'data-right-height-active';
 	var settings, containers, eventTimeout;
 
 	// Default settings
 	var defaults = {
 		selector: '[data-right-height]',
 		selectorContent: '[data-right-height-content]',
-		callback: function () {}
+		before: function () {},
+		after: function () {}
 	};
 
 
@@ -54,7 +56,7 @@
 				}
 			}
 		} else {
-			for ( var i = 0, len = collection.length; i < len; i++ ) {
+			for ( var i = collection.length - 1; i >= 0; i-- ) {
 				callback.call( scope, collection[i], i, collection );
 			}
 		}
@@ -105,7 +107,6 @@
 
 	};
 
-
 	/**
 	 * Wait until document is ready to run method
 	 * @private
@@ -126,6 +127,56 @@
 
 	};
 
+	/**
+	 * Check if the content is nested inside another Right Height content area
+	 * @private
+	 * @param  {Node}   elem     The element
+	 * @param  {Object} settings The settings
+	 * @return {Boolean}         If true, the element is nested
+	 */
+	var isNested = function ( elem, settings ) {
+
+		// Element.matches() polyfill
+		if (!Element.prototype.matches) {
+			Element.prototype.matches =
+				Element.prototype.matchesSelector ||
+				Element.prototype.mozMatchesSelector ||
+				Element.prototype.msMatchesSelector ||
+				Element.prototype.oMatchesSelector ||
+				Element.prototype.webkitMatchesSelector ||
+				function(s) {
+					var matches = (this.document || this.ownerDocument).querySelectorAll(s),
+						i = matches.length;
+					while (--i >= 0 && matches.item(i) !== this) {}
+					return i > -1;
+				};
+		}
+
+		// Check if element is nested
+		for ( ; elem && elem !== document; elem = elem.parentNode ) {
+			if ( elem.hasAttribute( activeContainer ) ) return false;
+			if ( elem.matches( settings.selectorContent ) ) return true;
+		}
+
+		return false;
+
+	};
+
+	/**
+	 * Purge the content list of nested content
+	 * @private
+	 * @param  {Array}  contents  The contents
+	 * @param  {Object} settings  The settings
+	 * @return {ARray}            A purged list
+	 */
+	var purgeList = function ( contents, settings ) {
+		var purged = [];
+		forEach(contents, (function (content) {
+			if ( isNested( content.parentNode, settings ) ) return;
+			purged.push( content );
+		}));
+		return purged;
+	};
 
 	/**
 	 * Get an element's distance from the top of the Document.
@@ -152,9 +203,11 @@
 	 */
 	var checkIfStacked = function ( contents ) {
 
+		if ( contents.length < 2 ) return true;
+
 		// Selectors and variables
-		var contentFirst = contents.item(0);
-		var contentSecond = contents.item(1);
+		var contentFirst = contents[0];
+		var contentSecond = contents[1];
 
 		// Determine if content containers are stacked
 		if ( contentFirst && contentSecond ) {
@@ -180,16 +233,15 @@
 	};
 
 	/**
-	 * Get the natural height of each content area, and
-	 * record the tallest height to set for all other elements.
+	 * Get the natural height of each content area, and record the tallest height to set for all other elements.
 	 * @private
 	 * @param  {Element} content A content area
 	 * @param  {Number} height The current tallest height
 	 * @return {Number} The updated tallest height
 	 */
 	var getHeight = function ( content, height ) {
-		if ( content.offsetHeight > height ) {
-			height = content.offsetHeight;
+		if ( parseInt( root.getComputedStyle( content ).height, 10 ) > parseInt( height, 10 ) ) {
+			height = root.getComputedStyle( content ).height;
 		}
 		return height;
 	};
@@ -201,7 +253,7 @@
 	 * @param {Number} height The height of the tallest content area
 	 */
 	var setHeight = function ( content, height ) {
-		content.style.height = height + 'px';
+		content.style.height = height;
 	};
 
 	/**
@@ -211,12 +263,14 @@
 	 * @param  {Object} options
 	 */
 	rightHeight.adjustContainerHeight = function ( container, options ) {
-
 		// Selectors and variables
-		var settings = extend( settings || defaults, options || {} );  // Merge user options with defaults
-		var contents = container.querySelectorAll( settings.selectorContent );
+		var localSettings = extend( settings || defaults, options || {} );  // Merge user options with defaults
+		var contents = container.querySelectorAll( localSettings.selectorContent );
+		contents = purgeList( contents, localSettings );
 		var isStacked = checkIfStacked(contents);
 		var height = '0';
+
+		localSettings.before( container ); // Run callback after adjust content
 
 		// Reset each content area to its natural height
 		forEach(contents, (function (content) {
@@ -233,7 +287,7 @@
 			}));
 		}
 
-		settings.callback( container ); // Run callbacks after adjust content
+		localSettings.after( container ); // Run callback after adjust content
 
 	};
 
@@ -243,9 +297,19 @@
 	 * @param  {NodeList} containers A collection of content wrappers
 	 * @param  {Object}   settings
 	 */
-	var runRightHeight = function ( containers, settings ) {
-		forEach(containers, (function (container) {
-			rightHeight.adjustContainerHeight( container, settings );
+	var runRightHeight = function ( containers, options ) {
+
+		// Merge our settings and defaults
+		var localSettings = extend( settings || defaults, options || {} );
+
+		// Get our groups of content
+		containers = document.querySelectorAll( localSettings.selector );
+
+		// Adjust the container sizes
+		forEach(containers, (function (container, index) {
+			container.setAttribute( activeContainer, true );
+			rightHeight.adjustContainerHeight( container, localSettings );
+			container.removeAttribute( activeContainer );
 		}));
 	};
 
@@ -304,7 +368,6 @@
 
 		// Selectors and variables
 		settings = extend( defaults, options || {} ); // Merge user options with defaults
-		containers = document.querySelectorAll( settings.selector ); // Groups of content
 
 		// Events and listeners
 		ready((function() {
